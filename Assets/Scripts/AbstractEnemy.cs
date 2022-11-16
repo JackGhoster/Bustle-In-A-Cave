@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class AbstractEnemy : MonoBehaviour
 {
     //setting the walking animation base string, so I can choose the animations depending on the spawner(north,south,west,east)
-    protected string walkingAnimation;
+    protected string walkingAnimation = "";
 
     //since the sprites are small I divide the vector 2 value by this random speed setter variable
     protected float minSpeed = 70f;
@@ -28,7 +28,10 @@ public abstract class AbstractEnemy : MonoBehaviour
         //actually getting the transform and the position of the player
         player = GameObject.Find("Player").transform;
         playerPos = player.transform.position;
-        AnimationSetter();
+        if(walkingAnimation != null || animator != null)
+        {
+            AnimationSetter();
+        }    
     }
 
     public virtual void MoveTowardsPlayer()

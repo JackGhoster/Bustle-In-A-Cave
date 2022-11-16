@@ -8,8 +8,8 @@ public class PlayerController : MonoBehaviour
     private PlayerControls playerControls;
     public Animator animator;
     
-    private bool isGoingUp = false;
-    private bool isGoingRight = false;
+    //private bool isGoingUp = false;
+    //private bool isGoingRight = false;
 
     private Vector2 MoveInputVector = Vector2.zero;
     private Vector2  ScreenBordersVector = new Vector2(1.1f, 0.5f);

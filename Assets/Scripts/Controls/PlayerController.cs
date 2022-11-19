@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 
     private PlayerControls playerControls;
     public Animator animator;
+    public GameManager gameManager;
     
     //private bool isGoingUp = false;
     //private bool isGoingRight = false;
@@ -22,17 +23,6 @@ public class PlayerController : MonoBehaviour
     {
         playerControls = new PlayerControls();
         animator = GetComponent<Animator>();
-
-    }
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
 
@@ -60,10 +50,12 @@ public class PlayerController : MonoBehaviour
 
     protected void Move(Vector2 InputVector)
     {
+        //if player don't press any buttons, we don't proceed to the code below
         if (InputVector == Vector2.zero) return;
-
+        //otherwise we divide input values by the speed divider, for example if player goes right  x: 1 / speedDivider   
+        //I divide because the sprites are really small so it's much easier to understand it in comparison to multiplying by 0.0001
         this.transform.Translate(InputVector / speedDivider);
-
+        //player can't go out of the visible area
         OnScreenBorderEnter();
     }
 
@@ -73,7 +65,7 @@ public class PlayerController : MonoBehaviour
         //Really sorry for the dirty code I was really lazy with this one
 
         //The Vector that's used later to return character back to the game area
-        Vector2 ReturnerVector = Vector2.zero;
+        Vector2 ReturnerVector;
 
         //When trying to cross the upper border character is returning back down
         if (transform.position.y > ScreenBordersVector.y)
@@ -111,9 +103,13 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
-
+        gameManager.playerDied = true;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Die();
+    }
 
     private void OnEnable()
     {

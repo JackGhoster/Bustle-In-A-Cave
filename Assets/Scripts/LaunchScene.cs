@@ -32,7 +32,8 @@ public class LaunchScene : MonoBehaviour
 
     IEnumerator SceneChangeDelayer()
     {
-        yield return new WaitForSeconds(1.1f);
+        float delay = 1.1f;
+        yield return new WaitForSeconds(delay);
         SceneManager.LoadScene(targetScene, LoadSceneMode.Single);
     }
 

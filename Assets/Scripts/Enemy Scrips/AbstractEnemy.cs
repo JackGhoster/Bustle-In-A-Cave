@@ -16,7 +16,7 @@ public abstract class AbstractEnemy : MonoBehaviour
     protected Vector2 MovementVector;
    
     //player's transform/pos (just in case, I don't actually use it right now, but in case I will, it's ready to be used c:)
-    public Transform player;
+    public Transform playerTransform;
     protected Vector2 playerPos;
 
     protected Animator animator;
@@ -26,12 +26,23 @@ public abstract class AbstractEnemy : MonoBehaviour
         animator = GetComponent<Animator>();
 
         //actually getting the transform and the position of the player
-        player = GameObject.Find("Player").transform;
-        playerPos = player.transform.position;
-        if(walkingAnimation != null || animator != null)
+        GameObject player = GameObject.Find("Player");
+
+        if (player == null)
+        {
+            
+        }
+        else
+        {
+            playerTransform = GameObject.Find("Player").transform;
+            playerPos = playerTransform.transform.position;
+        }
+
+        if (walkingAnimation != null || animator != null)
         {
             AnimationSetter();
-        }    
+        }
+
     }
 
     public virtual void MoveTowardsPlayer()

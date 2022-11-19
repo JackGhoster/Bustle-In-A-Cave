@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 2289206791076438585}
   - component: {fileID: 2289206791076438584}
   - component: {fileID: 2289206791076438535}
-  - component: {fileID: 2289206791076438534}
+  - component: {fileID: 7974815658905812012}
+  - component: {fileID: 359607765}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -121,6 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2289206791076438585}
+  gameManager: {fileID: 0}
 --- !u!114 &2289206791076438535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,21 +152,59 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 4673fcca-dd83-4348-ac78-5d74a65b8145
     m_ActionName: Ground/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a603f849-f8f0-48de-a40e-37ce3136aad4
+    m_ActionName: Menu/Start[/Keyboard/space,/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: PC
   m_DefaultActionMap: Ground
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!65 &2289206791076438534
-BoxCollider:
+--- !u!61 &7974815658905812012
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2289206791076438588}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.033811722}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.22, y: 0.35}
+    newSize: {x: 0.22, y: 0.35}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.106688514, y: 0.2500146, z: 0.2}
-  m_Center: {x: -0.0011562482, y: -0.01792172, z: 0}
+  m_Size: {x: 0.137956, y: 0.28237653}
+  m_EdgeRadius: 0
+--- !u!50 &359607765
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2289206791076438588}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -11,7 +11,7 @@ public class LaunchScene : MonoBehaviour
     public AudioSource SFX;
     public Animator mainBGAnimator;
     public Animator tmpAnimator;
-    private string anim = "ChangeScene";
+    private string anim = "CaveScene";
             
 
     private void Awake()

@@ -6,6 +6,8 @@ public class AbstractSpawner : MonoBehaviour
 {
     public GameObject objectToSpawn;
 
+    public GameManager gameManager;
+
     //defines variations in spawn positions(will be a randomized value) that will be added to the bounds of the spawner boxes
     protected float xSpawnVariation;
     protected float ySpawnVariation;
@@ -36,6 +38,7 @@ public class AbstractSpawner : MonoBehaviour
     public virtual void Awake()
     {
         //the new unit will be spawned between this two values of time in seconds
+        gameManager = FindObjectOfType<GameManager>();
         minSpawnTime = 2;
         maxSpawnTime = 5;
 
@@ -52,7 +55,12 @@ public class AbstractSpawner : MonoBehaviour
 
     public virtual void Spawn()
     {
-        //setting a random time
+        //setting a random time and it gets harder after 12 secs of gameplay
+        if (gameManager.timeLeft < 10 && minSpawnTime > 0)
+        {
+            minSpawnTime -= 1f;
+            maxSpawnTime -= 1f;
+        }
         spawnTime = Random.Range(minSpawnTime, maxSpawnTime);
         spawnBoundsVector = new Vector3(xSpawnBound + xSpawnVariation, ySpawnBound + ySpawnVariation, 0);
         //the spawn itself!
